@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2025年度教育部人文社科基金立项数据可视化</title>
+  <meta name="description" content="2025年度教育部人文社科基金立项数据结果图展示页面。" />
+  <style>
+    /* ======== 基础样式（简洁、大方、无外部依赖） ======== */
+    :root{
+      --bg:#fff;--fg:#1f2937;--muted:#6b7280;--card:#f9fafb;--link:#2563eb;--ring:#e5e7eb;--accent:#111827;--chip:#eef2ff;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{--bg:#0b0f17;--fg:#e5e7eb;--muted:#9ca3af;--card:#0f1623;--link:#93c5fd;--ring:#1f2937;--accent:#f3f4f6;--chip:#111827}
+      img{filter:brightness(.98) contrast(1.02)}
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, "PingFang SC", "Noto Sans CJK SC", "Microsoft YaHei", Arial, sans-serif; background:var(--bg); color:var(--fg);}
+    a{color:var(--link); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* ======== 头部 ======== */
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(6px); background:color-mix(in oklab, var(--bg) 85%, transparent); border-bottom:1px solid var(--ring)}
+    .wrap{max-width:1100px; margin:0 auto; padding:12px 16px}
+    .brand{display:flex; align-items:center; justify-content:center; gap:12px}
+    .brand h1{font-size:24px; line-height:1.2; margin:0; text-align:center}
+    .brand small{color:var(--muted)}
+
+    /* ======== 主体 ======== */
+    main{max-width:1100px; margin:20px auto 64px; padding:0 16px}
+    .lead{margin:8px 0 18px; color:var(--muted)}
+
+    /* 快捷导航 */
+    .chips{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 24px}
+    .chip{display:inline-block; padding:6px 10px; border:1px solid var(--ring); border-radius:999px; background:var(--chip); color:var(--fg); font-size:16px}
+
+    /* 图组网格 */
+    .section{margin:28px 0}
+    .section h2{font-size:20px; margin:0 0 12px}
+    .grid{display:grid; gap:14px}
+    @media (min-width: 640px){ .grid{grid-template-columns: repeat(2, 1fr)} }
+    @media (min-width: 960px){ .grid{grid-template-columns: repeat(3, 1fr)} }
+
+    .card{background:var(--card); border:1px solid var(--ring); border-radius:14px; overflow:hidden; display:flex; flex-direction:column}
+    .thumb{position:relative; aspect-ratio:16/10; background:#e5e7eb; display:block}
+    .thumb > img{width:100%; height:100%; object-fit:contain; display:block}
+    .meta{padding:10px 12px; display:flex; justify-content:space-between; align-items:center; gap:8px}
+    .meta h3{font-size:16px; margin:0}
+    .btn{display:inline-flex; align-items:center; gap:6px; font-size:12px; padding:6px 10px; border-radius:10px; border:1px solid var(--ring); background:#fff0; text-decoration:none}
+    .btn:hover{background:color-mix(in oklab, var(--bg) 80%, var(--ring))}
+
+    /* 页脚 */
+    footer{margin:48px 0 24px; color:var(--muted); text-align:center}
+
+    /* ======== 轻量图片灯箱 ======== */
+    dialog#lightbox{border:none; padding:0; border-radius:12px; overflow:hidden; background:transparent}
+    dialog::backdrop{background:rgb(0 0 0 / .55)}
+    .lightbox-frame{max-width:min(96vw,1100px); max-height:90vh; background:var(--bg); border:1px solid var(--ring); border-radius:12px; display:flex; flex-direction:column}
+    .lightbox-head{display:flex; justify-content:space-between; align-items:center; padding:10px 12px; border-bottom:1px solid var(--ring)}
+    .lightbox-title{font-size:14px; margin:0}
+    .lightbox-body{padding:8px;}
+    .lightbox-body img{max-width:100%; max-height:72vh; height:auto; width:auto; display:block; margin:0 auto}
+    .icon{width:16px; height:16px; display:inline-block}
+
+    /* 可选：打印样式（方便存档分享） */
+    @media print{
+      header, .chips, .btn{display:none}
+      body{background:#fff}
+      .card{break-inside:avoid}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap brand">
+      <h1>2025年度教育部人文社科基金立项数据可视化</h1>
+    </div>
+  </header>
+
+  <main>
+    <p style="font-size:18px;">本文集是微信公众号文章 <strong>《2025年度教育部人文社会科学项目立项结果可视化分析》</strong> 的配套高清可视化图表库。所有图表均可点击放大查看，交互式网络图可进入专属页面进行探索。</p>
+
+    <nav class="chips" aria-label="页面分区快捷导航">
+      <a class="chip" href="#overview">宏观鸟瞰</a>
+      <a class="chip" href="#keywords">高频词分析</a>
+      <a class="chip" href="#network">关键词共现网络</a>
+      <a class="chip" href="#download">代码与数据</a>
+    </nav>
+
+    <!-- 宏观鸟瞰 -->
+    <section id="overview" class="section">
+      <h2>一、宏观鸟瞰（Macro Overview）</h2>
+      <div class="grid">
+        <article class="card">
+          <a class="thumb" href="#" data-title="各学科门类分布" data-src="./assets/images/discipline_distribution_analysis.png" title="点击放大预览">
+            <img loading="lazy" src="./assets/images/discipline_distribution_analysis.png" alt="各学科门类分布柱状图" />
+          </a>
+          <div class="meta"><h3>1. 各学科门类分布</h3></div>
+        </article>
+
+        <article class="card">
+          <a class="thumb" href="#" data-title="项目类别分布" data-src="./assets/images/project_category_analysis_revised_smallpie.png" title="点击放大预览">
+            <img loading="lazy" src="./assets/images/project_category_analysis_revised_smallpie.png" alt="项目类别分布饼图" />
+          </a>
+          <div class="meta"><h3>2. 项目类别分布</h3></div>
+        </article>
+
+        <article class="card">
+          <a class="thumb" href="#" data-title="机构分布 (TOP 20)" data-src="./assets/images/top20_universities_analysis.png" title="点击放大预览">
+            <img loading="lazy" src="./assets/images/top20_universities_analysis.png" alt="机构分布柱状图" />
+          </a>
+          <div class="meta"><h3>3. 机构分布（TOP 20）</h3></div>
+        </article>
+
+        <article class="card">
+          <a class="thumb" href="#" data-title="地域分布（省份）" data-src="./assets/images/province_distribution_analysis.png" title="点击放大预览">
+            <img loading="lazy" src="./assets/images/province_distribution_analysis.png" alt="省份分布柱状图" />
+          </a>
+          <div class="meta"><h3>4. 地域分布（按省份）</h3></div>
+        </article>
+
+        <article class="card">
+          <a class="thumb" href="#" data-title="地域分布（地区）" data-src="./assets/images/region_distribution_analysis.png" title="点击放大预览">
+            <img loading="lazy" src="./assets/images/region_distribution_analysis.png" alt="地区分布柱状图" />
+          </a>
+          <div class="meta"><h3>5. 地域分布（按地区）</h3></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 高频词分析 -->
+    <section id="keywords" class="section">
+      <h2>二、项目名称高频词分析（High-Frequency Words）</h2>
+      <div class="grid">
+        <article class="card">
+          <a class="thumb" href="#" data-title="全部项目高频词（词频）" data-src="./assets/images/top_6_words_barchart_overall.png">
+            <img loading="lazy" src="./assets/images/top_6_words_barchart_overall.png" alt="全部项目高频词柱状图" />
+          </a>
+          <div class="meta"><h3>1. 全部项目高频词（词频）</h3></div>
+        </article>
+
+        <article class="card">
+          <a class="thumb" href="#" data-title="全部项目词云" data-src="./assets/images/wordcloud_overall.png">
+            <img loading="lazy" src="./assets/images/wordcloud_overall.png" alt="全部项目词云" />
+          </a>
+          <div class="meta"><h3>2. 全部项目词云</h3></div>
+        </article>
+
+        <article class="card">
+          <a class="thumb" href="#" data-title="管理学项目高频词（词频）" data-src="./assets/images/top_13_words_barchart_management.png">
+            <img loading="lazy" src="./assets/images/top_13_words_barchart_management.png" alt="管理学项目高频词柱状图" />
+          </a>
+          <div class="meta"><h3>3. 管理学项目高频词（词频）</h3></div>
+        </article>
+
+        <article class="card">
+          <a class="thumb" href="#" data-title="管理学项目词云" data-src="./assets/images/wordcloud_management.png">
+            <img loading="lazy" src="./assets/images/wordcloud_management.png" alt="管理学项目词云" />
+          </a>
+          <div class="meta"><h3>4. 管理学项目词云</h3></div>
+        </article>
+
+        <article class="card">
+          <a class="thumb" href="#" data-title="交叉学科项目高频词（词频）" data-src="./assets/images/top_5_words_barchart_cross.png">
+            <img loading="lazy" src="./assets/images/top_5_words_barchart_cross.png" alt="交叉学科项目高频词柱状图" />
+          </a>
+          <div class="meta"><h3>5. 交叉学科项目高频词（词频）</h3></div>
+        </article>
+
+        <article class="card">
+          <a class="thumb" href="#" data-title="交叉学科项目词云" data-src="./assets/images/wordcloud_cross.png">
+            <img loading="lazy" src="./assets/images/wordcloud_cross.png" alt="交叉学科项目词云" />
+          </a>
+          <div class="meta"><h3>6. 交叉学科项目词云</h3></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 关键词共现网络 -->
+    <section id="network" class="section">
+      <h2>三、关键词共现网络（Co-occurrence Networks）</h2>
+      <div class="grid">
+        <article class="card">
+          <a class="thumb" href="#" data-title="全部项目关键词共现网络（静态预览）" data-src="./assets/images/keyword_co-occurrence_network_overall.png">
+            <img loading="lazy" src="./assets/images/keyword_co-occurrence_network_overall.png" alt="全部项目关键词共现网络静态图预览" />
+          </a>
+          <div class="meta">
+            <h3>1. 全部项目关键词共现网络</h3>
+            <a class="btn" href="./interactive/interactive_keyword_network_overall.html" target="_blank" rel="noopener">🔗 动态交互</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <a class="thumb" href="#" data-title="管理学项目关键词共现网络（静态预览）" data-src="./assets/images/keyword_co-occurrence_network_management.png">
+            <img loading="lazy" src="./assets/images/keyword_co-occurrence_network_management.png" alt="管理学项目关键词共现网络静态图预览" />
+          </a>
+          <div class="meta">
+            <h3>2. 管理学项目关键词共现网络</h3>
+            <a class="btn" href="./interactive/interactive_keyword_network_management.html" target="_blank" rel="noopener">🔗 动态交互</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <a class="thumb" href="#" data-title="交叉学科项目关键词共现网络（静态预览）" data-src="./assets/images/keyword_co-occurrence_network_cross.png">
+            <img loading="lazy" src="./assets/images/keyword_co-occurrence_network_cross.png" alt="交叉学科项目关键词共现网络静态图预览" />
+          </a>
+          <div class="meta">
+            <h3>3. 交叉学科项目关键词共现网络</h3>
+            <a class="btn" href="./interactive/interactive_keyword_network_cross.html" target="_blank" rel="noopener">🔗 动态交互</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 代码与数据下载 -->
+    <section id="download" class="section">
+      <h2>四、代码与数据下载（Code & Data）</h2>
+      <div class="grid" style="grid-template-columns:1fr 1fr;">
+        <article class="card">
+          <div class="meta" style="justify-content:flex-start; gap:10px">
+            <a class="btn" href="./downloads/code.zip" download>💾 下载分析代码（code.zip）</a>
+            <a class="btn" href="./downloads/data.zip" download>📊 下载项目数据（data.zip）</a>
+          </div>
+        </article>
+      </div>
+      <p style="font-size:18px;">建议：在 <strong>Kaggle</strong> 或 <strong>阿里云魔搭</strong> 的 Notebook 环境中解压并运行，按实际路径修改文件读取地址，即可复现。</p>
+    </section>
+
+    <footer>
+      <p><em>分析与可视化 by Ryan · 更新于 <span id="today"></span></em></p>
+    </footer>
+  </main>
+
+  <!-- 轻量灯箱对话框 -->
+  <dialog id="lightbox" aria-label="图片预览">
+    <div class="lightbox-frame">
+      <div class="lightbox-head">
+        <h3 class="lightbox-title" id="lb-title">图片预览</h3>
+        <button id="lb-close" class="btn" type="button" aria-label="关闭">✕ 关闭</button>
+      </div>
+      <div class="lightbox-body">
+        <img id="lb-img" alt="预览图" />
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    // 今日日期
+    (function(){
+      const el=document.getElementById('today');
+      if(el){
+        const d=new Date();
+        const s=[d.getFullYear(), String(d.getMonth()+1).padStart(2,'0'), String(d.getDate()).padStart(2,'0')].join('-');
+        el.textContent=s;
+      }
+    })();
+
+    // 轻量灯箱：任意 .thumb 点击放大到 dialog
+    (function(){
+      const dlg=document.getElementById('lightbox');
+      const img=document.getElementById('lb-img');
+      const title=document.getElementById('lb-title');
+      const close=document.getElementById('lb-close');
+      document.addEventListener('click', (e)=>{
+        const a=e.target.closest('a.thumb');
+        if(!a) return;
+        e.preventDefault();
+        const src=a.getAttribute('data-src');
+        const t=a.getAttribute('data-title') || '图片预览';
+        img.src=src; title.textContent=t; dlg.showModal();
+      });
+      close.addEventListener('click', ()=> dlg.close());
+      dlg.addEventListener('click', (e)=>{ if(e.target===dlg) dlg.close(); });
+      window.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && dlg.open) dlg.close(); });
+    })();
+  </script>
+</body>
+</html>
