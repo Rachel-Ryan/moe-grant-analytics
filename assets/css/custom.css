@@ -1,0 +1,109 @@
+/* custom.css - v2.0 Gallery Grid Layout */
+
+/* --- 全局背景设定 --- */
+body {
+    background-color: #f4f6f8;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #333;
+}
+
+/* --- 移除原主题的宽度限制和边框 --- */
+.wrapper {
+    max-width: none; /* 移除最大宽度限制 */
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    background-color: transparent;
+}
+
+/* --- 主要内容容器，提供左右边距 --- */
+.page-content {
+    max-width: 1800px; /* 设定一个非常宽的上限，适用于大屏幕 */
+    margin: 2rem auto; /* 上下边距，自动居中 */
+    padding: 0 2rem; /* 左右内边距，防止内容贴边 */
+}
+
+/* --- 核心：画廊网格容器 --- */
+.grid-container {
+    display: grid;
+    /* * 响应式布局核心：
+     * - auto-fit: 自动填充尽可能多的列。
+     * - minmax(450px, 1fr): 每列最小宽度为450px，最大为1个弹性单位（自动均分）。
+     * 在宽屏上会自动分为多列，窄屏上自动变为1列。
+     */
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 2rem; /* 网格项之间的间距 */
+    width: 100%;
+}
+
+/* --- 网格内的卡片项 --- */
+.grid-item {
+    background-color: #ffffff;
+    border: 1px solid #e1e4e8;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    overflow: hidden; /* 确保图片圆角生效 */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.grid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* --- 卡片内的图片 --- */
+.grid-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- 卡片内的内容区域（标题、链接等） --- */
+.item-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- 卡片标题/图表说明 --- */
+.item-content h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+/* --- 交互式图表的链接按钮 --- */
+.interactive-link {
+    display: inline-block;
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    margin-top: auto; /* 将按钮推到底部 */
+    transition: background-color 0.2s ease;
+}
+
+.interactive-link:hover {
+    background-color: #0056b3;
+}
+
+/* --- 页面顶部和底部的文本区域（下载区等） --- */
+.text-section {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 2rem;
+}
+
+h1, h2 {
+    border-bottom: 2px solid #e1e4e8;
+    padding-bottom: 0.5rem;
+    margin-top: 0;
+}
