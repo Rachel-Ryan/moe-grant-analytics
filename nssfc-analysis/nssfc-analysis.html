@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2025年国家社会科学基金管理学立项项目名称语义分析结果可视化</title>
+  <meta name="description" content="2025年国家社会科学基金管理学立项项目名称语义分析结果展示页面。" />
+  <style>
+    /* ======== 基础样式（简洁、大方、无外部依赖） ======== */
+    :root{
+      --bg:#fff;--fg:#1f2937;--muted:#6b7280;--card:#f9fafb;--link:#2563eb;--ring:#e5e7eb;--accent:#111827;--chip:#eef2ff;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{--bg:#0b0f17;--fg:#e5e7eb;--muted:#9ca3af;--card:#0f1623;--link:#93c5fd;--ring:#1f2937;--accent:#f3f4f6;--chip:#111827}
+      img{filter:brightness(.98) contrast(1.02)}
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, "PingFang SC", "Noto Sans CJK SC", "Microsoft YaHei", Arial, sans-serif; background:var(--bg); color:var(--fg);}
+    a{color:var(--link); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* ======== 头部 ======== */
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(6px); background:color-mix(in oklab, var(--bg) 85%, transparent); border-bottom:1px solid var(--ring)}
+    .wrap{max-width:1100px; margin:0 auto; padding:12px 16px}
+    .brand{display:flex; align-items:center; justify-content:center; gap:12px}
+    .brand h1{font-size:22px; line-height:1.2; margin:0; text-align:center}
+    .brand small{color:var(--muted)}
+
+    /* ======== 主体 ======== */
+    main{max-width:1100px; margin:20px auto 64px; padding:0 16px}
+    .lead{margin:8px 0 18px; color:var(--muted)}
+
+    /* 快捷导航 */
+    .chips{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 24px}
+    .chip{display:inline-block; padding:6px 10px; border:1px solid var(--ring); border-radius:999px; background:var(--chip); color:var(--fg); font-size:16px}
+
+    /* 图组网格 */
+    .section{margin:28px 0}
+    .section h2{font-size:20px; margin:0 0 12px}
+    .grid{display:grid; gap:14px}
+    @media (min-width: 640px){ .grid{grid-template-columns: repeat(2, 1fr)} }
+    @media (min-width: 960px){ .grid{grid-template-columns: repeat(3, 1fr)} }
+
+    .card{background:var(--card); border:1px solid var(--ring); border-radius:14px; overflow:hidden; display:flex; flex-direction:column}
+    .thumb{position:relative; aspect-ratio:16/10; background:#e5e7eb; display:block}
+    .thumb > img{width:100%; height:100%; object-fit:contain; display:block}
+    .meta{padding:10px 12px; display:flex; justify-content:space-between; align-items:center; gap:8px}
+    .meta h3{font-size:16px; margin:0}
+    .btn{display:inline-flex; align-items:center; gap:6px; font-size:12px; padding:6px 10px; border-radius:10px; border:1px solid var(--ring); background:#fff0; text-decoration:none}
+    .btn:hover{background:color-mix(in oklab, var(--bg) 80%, var(--ring))}
+
+    /* 页脚 */
+    footer{margin:48px 0 24px; color:var(--muted); text-align:center}
+
+    /* ======== 轻量图片灯箱 ======== */
+    dialog#lightbox{border:none; padding:0; border-radius:12px; overflow:hidden; background:transparent}
+    dialog::backdrop{background:rgb(0 0 0 / .55)}
+    .lightbox-frame{max-width:min(96vw,1100px); max-height:90vh; background:var(--bg); border:1px solid var(--ring); border-radius:12px; display:flex; flex-direction:column}
+    .lightbox-head{display:flex; justify-content:space-between; align-items:center; padding:10px 12px; border-bottom:1px solid var(--ring)}
+    .lightbox-title{font-size:14px; margin:0}
+    .lightbox-body{padding:8px;}
+    .lightbox-body img{max-width:100%; max-height:72vh; height:auto; width:auto; display:block; margin:0 auto}
+    .icon{width:16px; height:16px; display:inline-block}
+
+    /* 可选：打印样式（方便存档分享） */
+    @media print{
+      header, .chips, .btn{display:none}
+      body{background:#fff}
+      .card{break-inside:avoid}
+    }
+    
+    .card { position: relative; padding-bottom: 38px; } /* 预留底部空间给标题条 */
+.meta {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  border-top: 1px solid var(--ring);
+  background: var(--card);
+  padding: 8px 12px;
+}
+
+
+    
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap brand">
+      <h1>2025年国家社会科学基金管理学立项项目名称语义分析结果可视化</h1>
+    </div>
+  </header>
+
+
+
+
+  <main>
+    <p style="font-size:18px;">公众号文章 <strong>《<a href="https://mp.weixin.qq.com/s/LQaOX3hLnp15Ln9aDzG7ww" target="_blank" rel="noopener">2025年国家社会科学基金管理学立项项目名称语义分析</a>》</strong> 的配套高清可视化图表库。所有图表均可点击放大查看，交互图可进入专属页面进行探索。关注微信公众号<strong>学海拾珠漫步知途</strong>获取详细解读和更多科研资讯！</p>
+    
+    
+
+    <nav class="chips" aria-label="页面分区快捷导航">
+      
+      <a class="chip" href="#keywords">用词分析</a>
+      <a class="chip" href="#semantic">语义分析</a>
+      <a class="chip" href="#download">代码与数据</a>
+    </nav>
+
+    
+
+    <!-- 用词分析 -->
+    <section id="keywords" class="section">
+      <h2>一、项目名称高频词分析（High-Frequency Words）</h2>
+      <div class="grid">
+      
+      <article class="card">
+          <a class="thumb" href="#" data-title="项目标题长度分布" data-src="./assets/images/all_projects_length_dist.png">
+            <img loading="lazy" src="./assets/images/all_projects_length_dist.png" alt="项目标题长度分布图" />
+          </a>
+          <div class="meta"><h3>1. 项目标题长度分布</h3></div>
+        </article>
+      
+        
+
+        <article class="card">
+          <a class="thumb" href="#" data-title="项目标题高频词" data-src="./assets/images/tfidf-freq-words.png">
+            <img loading="lazy" src="./assets/images/tfidf-freq-words.png" alt="项目标题高频词" />
+          </a>
+          <div class="meta"><h3>2. 项目标题高频词</h3></div>
+        </article>
+        
+        <article class="card">
+          <a class="thumb" href="#" data-title="项目标题关键词共现网络（Top 150静态预览）" data-src="./assets/images/keyword_cooccurrence_network_overall.png">
+            <img loading="lazy" src="./assets/images/keyword_cooccurrence_network_overall.png" alt="项目标题关键词共现网络静态图预览" />
+          </a>
+          <div class="meta">
+            <h3>3. 项目标题关键词共现网络</h3>
+            <a class="btn" href="./interactive/interactive_keyword_network.html" target="_blank" rel="noopener">🔗 动态交互</a>
+          </div>
+        </article>
+
+        
+        
+      </div>
+    </section>
+
+    
+    
+    
+    <!-- 聚类和主题挖掘 -->
+    <section id="semantic" class="section">
+      <h2>二、语义分析（Semantic Analysis）</h2>
+      <div class="grid">
+      
+      <article class="card">
+          <a class="thumb" href="#" data-title="项目标题BERTopic聚类结果" data-src="./assets/images/bertopic-k-15.png">
+            <img loading="lazy" src="./assets/images/bertopic-k-15.png" alt="项目标题BERTopic聚类结果" />
+          </a>
+          <div class="meta">
+          <h3>1. BERTopic (K=15)聚类结果</h3>
+          <a class="btn" href="./interactive/management_topics_distance_map.html" target="_blank" rel="noopener">🔗 动态交互</a>
+          </div>
+        </article>
+        
+        <article class="card">
+          <a class="thumb" href="#" data-title="BERTopic类簇关键词" data-src="./assets/images/cluster-keyword.png">
+            <img loading="lazy" src="./assets/images/cluster-keyword.png" alt="BERTopic类簇关键词" />
+          </a>
+          <div class="meta">
+          <h3>2. BERTopic类簇关键词</h3>
+          <a class="btn" href="./interactive/management_topics_barchart.html" target="_blank" rel="noopener">🔗 动态交互</a>
+          </div>
+        </article>
+        
+        <article class="card">
+          <a class="thumb" href="#" data-title="BERTopic类簇相似性" data-src="./assets/images/cluster-sim.png">
+            <img loading="lazy" src="./assets/images/cluster-sim.png" alt="BERTopic类簇相似性" />
+          </a>
+          <div class="meta">
+          <h3>3. BERTopic类簇相似性</h3>
+          <a class="btn" href="./interactive/management_topics_heatmap.html" target="_blank" rel="noopener">🔗 动态交互</a>
+          </div>
+        </article>
+      
+        
+        <article class="card">
+          <a class="thumb" href="#" data-title="项目标题主题挖掘结果（Top 30静态预览）" data-src="./assets/images/lda-k14.png">
+            <img loading="lazy" src="./assets/images/lda-k14.png" alt="项目标题主题挖掘结果静态图预览" />
+          </a>
+          <div class="meta">
+            <h3>4. LDA (K=14)主题挖掘结果</h3>
+            <a class="btn" href="./interactive/lda_k14_interactive.html" target="_blank" rel="noopener">🔗 动态交互</a>
+          </div>
+        </article>
+
+        
+        
+      </div>
+    </section>
+    
+
+    <!-- 代码与数据下载 -->
+    <section id="download" class="section">
+      <h2>三、代码与数据下载（Code & Data）</h2>
+      <a style="font-size:16px;" class="btn" href="./downloads/code.zip" download>💾 下载分析代码（code.zip）</a>&nbsp;&nbsp;<a style="font-size:16px;" class="btn" href="./downloads/data.zip" download>📊 下载项目数据（data.zip）</a>
+      </div>
+      <p style="font-size:18px;">建议：在 <strong>Kaggle</strong> 或 <strong>阿里云魔搭</strong> 的 Notebook 环境中解压并运行，按实际路径修改文件读取地址，即可复现。</p>
+    </section>
+
+    <footer>
+      <p><em>分析与可视化 by Ryan · 更新于 <span>2025-10-31</span></em></p>
+    </footer>
+  </main>
+
+  <!-- 轻量灯箱对话框 -->
+  <dialog id="lightbox" aria-label="图片预览">
+    <div class="lightbox-frame">
+      <div class="lightbox-head">
+        <h3 class="lightbox-title" id="lb-title">图片预览</h3>
+        <button id="lb-close" class="btn" type="button" aria-label="关闭">✕ 关闭</button>
+      </div>
+      <div class="lightbox-body">
+        <img id="lb-img" alt="预览图" />
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    
+
+    // 轻量灯箱：任意 .thumb 点击放大到 dialog
+    (function(){
+      const dlg=document.getElementById('lightbox');
+      const img=document.getElementById('lb-img');
+      const title=document.getElementById('lb-title');
+      const close=document.getElementById('lb-close');
+      document.addEventListener('click', (e)=>{
+        const a=e.target.closest('a.thumb');
+        if(!a) return;
+        e.preventDefault();
+        const src=a.getAttribute('data-src');
+        const t=a.getAttribute('data-title') || '图片预览';
+        img.src=src; title.textContent=t; dlg.showModal();
+      });
+      close.addEventListener('click', ()=> dlg.close());
+      dlg.addEventListener('click', (e)=>{ if(e.target===dlg) dlg.close(); });
+      window.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && dlg.open) dlg.close(); });
+    })();
+  </script>
+</body>
+</html>
